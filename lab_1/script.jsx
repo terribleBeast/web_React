@@ -8,6 +8,7 @@ const password = document.getElementById('password')
 function clearForm() {
   login.textContent = ''
   password.textContent = ''
+  console.log('clear form')
 }
 
 
@@ -21,7 +22,7 @@ function dec() {
     update();
 }
 
-decrementCounter.addEventListener("decrementCounterEvent", dec);
+decrementCounter.addEventListener("click", dec);
 
 // formAuthorithation.addEventListener('')
 function update() {
@@ -31,6 +32,5 @@ function update() {
 // скрипт, который уведомит о полной загрузке страницы
 window.onload = () => {
   console.log('Страница загружена')
-  //document.write(`<h2>Загрузка окончена<\h2>`)
 };
 

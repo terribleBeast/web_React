@@ -1,16 +1,7 @@
+// counter 
 let counter = 0
 const count = document.getElementById("count");
 const decrementCounter = document.getElementById('decrementCounter')
-const formAuthorithation = document.getElementById('formAuthorithation')
-const login = document.getElementById('login')
-const password = document.getElementById('password')
-
-function clearForm() {
-  login.textContent = ''
-  password.textContent = ''
-  console.log('clear form')
-}
-
 
 function inc() {
   console.log('inc', counter++)
@@ -22,15 +13,58 @@ function dec() {
     update();
 }
 
-decrementCounter.addEventListener("click", dec);
-
-// formAuthorithation.addEventListener('')
 function update() {
-    count.textContent = counter;
+  count.textContent = counter;
 }
 
-// скрипт, который уведомит о полной загрузке страницы
+decrementCounter.addEventListener("click", dec);
+
+
+// form
+
+const loginForm = document.getElementById('loginForm')
+const loginInput = document.getElementById('login')
+const passwordInput = document.getElementById('password')
+const message = document.getElementById('message')
+
+
+function clearForm() {
+  login.textContent = ''
+  password.textContent = ''
+  console.log('clear form')
+}
+
+loginForm.addEventListener('submit', function(event) {
+  event.preventDefault() // отмена стандартного поведения браузера
+
+
+  const login = event.target[0].value
+  const password = event.target[1].value
+
+  if (login === 'admin' && password === 'admin')
+  {
+    message.textContent = 'Вход выполнен!'
+    localStorage.setItem('login', login)
+    localStorage.setItem('password', password)
+  } else {
+    message.textContent = 'Вход не выполнен'
+  }
+}
+)
+
+// when the page is loaded
 window.onload = () => {
   console.log('Страница загружена')
+
+  const savedLogin = localStorage.getItem('login')
+  const savedPassword = localStorage.getItem('password')
+
+  if (savedLogin && savedPassword)
+  {
+    loginInput.value = savedLogin
+    passwordInput.value = savedPassword
+  }
 };
+
+
 

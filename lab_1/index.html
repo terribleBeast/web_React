@@ -1,30 +1,41 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <title>Main page</title>
 </head>
+
 <body>
+    <h2>Счетчик</h2>
     <p id="count">0</p>
     <div>
         <button id="decrementCounter">Decrement</button>
         <button onclick="inc()">Increment</button>
     </div>
 
+    <br>
+
+    <h2>Форма авторизации</h2>
+    <form id="loginForm">
+        <label for="login">Логин</label>
+        <input type="text" id="login">
+        <br>
+        <label for="password">Пароль</label>
+        <input type="text" id="password">
+        <!--Не нужно добавлять name, так как в строке запроса тогда будет указан логин и пароль?-->
+        <br> <br>
+        <button type="submit">Войти</button>
+        <br>
+        <button onclick="clearForms()" id="clearForm">Очистить данные</button>
+    </form>
+
+    <p id="message"></p>
+
     <script src="script.jsx">
     </script>
 
 
-
-    <form action="">
-        <p>Логин</p>
-        <input type="text" id="login">
-        <br>
-        <p>Пароль</p>
-        <input type="text" id="password">
-        <button>Войти</button>
-        <br>
-        <button onclick="clearForms()" id="">Очистить данные</button>
-    </form>
 </body>
+
 </html>

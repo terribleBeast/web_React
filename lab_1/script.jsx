@@ -44,9 +44,18 @@ loginForm.addEventListener('submit', function(event) {
   if (login === 'admin' && password === 'admin')
   {
     message.textContent = 'Вход выполнен!'
-    localStorage.setItem('login', login)
-    localStorage.setItem('password', password)
-  } else {
+
+    try {
+      localStorage.setItem('login', login)
+      localStorage.setItem('password', password)
+    
+    } catch (error) {
+      if (error === QUOTA_EXCEEDED_ERR)
+      {
+        alert('Превышен лимит локального хранилища');
+      }
+    }
+    } else {
     message.textContent = 'Вход не выполнен'
   }
 }

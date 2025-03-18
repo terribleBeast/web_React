@@ -36,3 +36,33 @@
     transform: rotate(360deg);
   }
 }
+
+.container {
+  width: 80%; margin: 0 auto; 
+  /* text-align: center; */
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  background-size: 10px;
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  max-width: 500px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.ico {
+  color: red;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.txt {
+    text-align: left;
+}

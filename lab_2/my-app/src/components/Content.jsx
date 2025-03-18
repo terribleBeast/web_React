@@ -1,14 +1,28 @@
 import React from 'react'
+import '../App.css'
 
-function Content({data}) {
 
-    Object.keys(data).map(key => console.log(key))
+function Content({ data }) {
 
     return (
-        <div>
-    {Object.keys(data).map(key => (<><h4 id={`#lab${key}`}>{key}</h4><p>{data[key]}</p></>))}        
+        <div className='container'>
+            {
+                Object.keys(data).map(key => (
+                    <div className='item'>
+                        <h4 id={`lab${key}`} className='ico'>{key}</h4>
+                        <p className='txt'>
+                        {data[key].split('\n').map((line, index) => (
+                            <React.Fragment key={index}>
+                                {line}
+                                <br />
+                            </React.Fragment>))
+                            }
+                        </p>
+                    </div>
+                ))
+            }
         </div>
-        
+
     )
 }
 

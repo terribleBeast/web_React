@@ -4,9 +4,9 @@ import labsList from '../labsList.json'
 
 function Header() {
     return (
-        <header>
+        <header style={{textAlign: `center`}}>
             <h2>
-                заглавие
+                Это заголовок
             </h2>
         <Menu data={labsList}></Menu>
             

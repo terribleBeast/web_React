@@ -4,7 +4,7 @@ function Footer() {
     return (
         <footer>
             <h2>
-                Заголовок
+                Подвал
             </h2>
         </footer>
     )

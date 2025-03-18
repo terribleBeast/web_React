@@ -1,18 +1,14 @@
 import './App.css';
-import Button from './components/Button';
-import Container from './components/Container';
-import listProduct from './listProduct.json';
-
+import {Footer, Header, Content } from './components';
+import labsList from './labsList.json'
 
 function App() {
   return (
     <div className="App">
       <Header>
-      </Header>
-      <Content>
-        <Menu>
 
-        </Menu>
+      </Header>
+      <Content data={labsList}> 
       </Content>
       <Footer></Footer>
     </div>

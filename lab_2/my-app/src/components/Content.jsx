@@ -1,15 +1,14 @@
 import React from 'react'
 
-function Content() {
+function Content({data}) {
+
+    Object.keys(data).map(key => console.log(key))
+
     return (
         <div>
-            <p>Мой контент</p>
+    {Object.keys(data).map(key => (<><h4 id={`#lab${key}`}>{key}</h4><p>{data[key]}</p></>))}        
         </div>
-        // <Content>
-        //     <h2>
-        //         Заголовок
-        //     </h2>
-        // </Content>
+        
     )
 }
 

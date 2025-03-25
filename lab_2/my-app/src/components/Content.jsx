@@ -11,10 +11,10 @@ function Content({ data }) {
                     <div className='item'>
                         <h4 id={`lab${key}`} className='ico'>{key}</h4>
                         <p className='txt'>
-                        {data[key].split('\n').map((line, index) => (
+                        {data[key].map((line, index) => (
                             <React.Fragment key={index}>
                                 {line}
-                                <br />
+                                <br         />
                             </React.Fragment>))
                             }
                         </p>

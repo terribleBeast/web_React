@@ -2,16 +2,13 @@ import React from 'react'; // ядро React
 import ReactDOM from 'react-dom/client'; // ядро React
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ChangeTheme from './components/ChangeTheme'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <ChangeTheme>
+        <React.StrictMode>
+            <App />
+        </React.StrictMode>
+    </ChangeTheme>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

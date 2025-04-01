@@ -6,9 +6,10 @@ import ChangeTheme from './components/ChangeTheme'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <ChangeTheme>
-        <React.StrictMode>
-            <App />
-        </React.StrictMode>
-    </ChangeTheme>
+
+        <ChangeTheme>
+            <React.StrictMode>
+                <App />
+            </React.StrictMode>
+        </ChangeTheme>
 );

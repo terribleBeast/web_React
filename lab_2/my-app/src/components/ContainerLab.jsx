@@ -3,7 +3,7 @@ import '../App.css'
 
 function ContainerLab({ data }) {
     return (
-        <ul className='txt'>
+        <ul style={{textAlign: 'left'}}>
             {data.map((line) => (
                 <li>
                     {line}

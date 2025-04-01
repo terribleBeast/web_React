@@ -1,21 +1,17 @@
 import React from 'react'
 
-
-
-function Menu({ data }) {
+function Menu() {
 
   return (
     <div >
-      <ul>
+      {/* <ul>
         {
           Object.keys(data).map(key => (
-            <li style={{display: `inline`, marginRight: `10px`
-            }}>
-              <a href={`#lab${key}`}>{key}</a>
-            </li>)
+          <button onClick={() => navigate(key, {replace: false})}>asdaasdasddvasddvasddvasdvasdv</button>  
+          )
           )
         }
-      </ul>
+      </ul> */}
     </div>
   )
 }

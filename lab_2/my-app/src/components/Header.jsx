@@ -1,11 +1,15 @@
 import React from 'react'
+import ButtonTheme from './ButtonTheme';
 
-function Header({children}) {
+function Header({ children }) {
     return (
-        <header style={{ textAlign: `center` }}>
-            <h2>
-                Это заголовок
-            </h2>
+        <header>
+
+                <ButtonTheme></ButtonTheme>
+                <h2>
+                    Это заголовок
+                </h2>
+
             {children}
         </header>
     )

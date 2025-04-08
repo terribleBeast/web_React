@@ -1,26 +1,34 @@
 import './App.css';
-import { Footer, Header, Content, Menu } from './components';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Footer, Header, Content } from './components';
+import { Routes, Route, Outlet } from 'react-router-dom';
 import { PageOne, PageTwo } from './components/Pages';
+import Home from './components/Home'
+import Form from './components/Form'
+import AppBar from './components/ButtonAppBar';
+import Auth from './components/Auth';
 
 // should added <body>
 function App() {
   return (
     <div className="App">
-      
-      <Header/>
-      <Content>
-        <BrowserRouter>
+
+      <Header>
+        <AppBar />
+      </Header>
+      <Auth>
+        <Content>
           <Routes>
-            <Route path="/" element={<Menu />}>
-              <Route index element={<div>NO page is selected</div>} />
-              <Route path="one" element={<PageOne />} />
-              <Route path="two" element={<PageTwo />} />
+            <Route path="/" element={<Outlet />}>
+              <Route index element={<Home/>} />
+              <Route path="form" element={<Form />} />
+              <Route path="*" element={<div>Not valid path</div>} />
             </Route>
           </Routes>
-        </BrowserRouter>
-      </Content>
+
+        </Content>
+      </Auth>
       <Footer />
+
     </div>
 
 

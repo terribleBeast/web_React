@@ -1,14 +1,20 @@
 import React from 'react'
-import ButtonTheme from './ButtonTheme';
+
 
 function Header({ children }) {
     return (
         <header>
 
-                <ButtonTheme></ButtonTheme>
-                <h2>
-                    Это заголовок
-                </h2>
+            <div style={{display: 'flex', justifySelf: 'right'}}>
+            {/* <BrowserRouter>
+                
+                <Routes path='/' element={<Content/>}>
+                    <Route to='/form' element={<Form />}></Route>
+                </Routes>
+                
+            </BrowserRouter> */}
+            </div>
+           
 
             {children}
         </header>

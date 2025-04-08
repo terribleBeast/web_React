@@ -1,7 +1,6 @@
 import React from 'react'
 import '../App.css'
-// import ContainerLab from './ContainerLab';
-// import HeaderLab from './HeaderLab';
+
 
 function Content({ children }) {
 
@@ -21,7 +20,10 @@ function Content({ children }) {
                 <input type='range' min="1" max="9" value={numLab} onChange={changeNumber} />
             </div>
             <ContainerLab data={data[numLab].body} key={numLab} /> */}
+            {/* <Link to='/form'><button>Log in</button></Link>
+            <Outlet/> */}
             {children}
+        
         </div>
     )
 }

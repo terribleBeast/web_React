@@ -64,7 +64,7 @@ loginForm.addEventListener('submit', function(event) {
 // when the page is loaded
 window.onload = () => {
   console.log('Страница загружена')
-
+  
   const savedLogin = localStorage.getItem('login')
   const savedPassword = localStorage.getItem('password')
 

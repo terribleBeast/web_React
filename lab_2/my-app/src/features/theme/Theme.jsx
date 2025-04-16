@@ -9,7 +9,6 @@ const ChangeTheme = ({ children }) => {
     const theme = useContext(ThemeContext)
 
     console.log(selectTheme);
-    // https://dev.to/nas5w/toggling-light-dark-theme-in-react-with-usecontext-39hn
     return (
         <div
             style={{

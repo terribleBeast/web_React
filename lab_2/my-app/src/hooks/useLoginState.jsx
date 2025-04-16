@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { selectUserIsLogIn, toLogIn, toLogOut } from '../features/user/userSlice';
+import { useSelector } from 'react-redux';
+
 
 /*
  * Хук для проверки авторизации 
@@ -6,18 +9,21 @@ import React, { useEffect, useState } from 'react';
  * @param {*} initialValue 
  * @returns 
  */
+
 function useLoginState() {
 
-    const stateLog = localStorage.getItem('isLogIn') === 'true';
-    const [value, setValue] = useState(stateLog);
+    const isLogIn = useSelector(selectUserIsLogIn) !== null;
+
+    // const stateLog = localStorage.getItem('isLogIn') === 'true';
+    const [value, setValue] = useState(isLogIn);
 
     useEffect(() => {
-        // setValue(value === true || value === 'true' ? false : true);
+        setValue(!value);
         console.log('useLoginState', value)
-    }, [localStorage])
+    }, [isLogIn])
 
     function handleChange() {
-        setValue(value === 'true' ? 'false' : 'true');
+        setValue(value ? false : true);
 
     }
     return [value, handleChange];

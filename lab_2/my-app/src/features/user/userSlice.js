@@ -4,21 +4,25 @@ export const userSlice = createSlice({
     name: 'user',
     initialState: {
         login: null,
+        isLogIn: false,
     },
 
     reducers: {
-        toLogIn: (state, loginUser) => {
-            state.value = loginUser
+        toLogIn: (state) => {
+            state.login = 'admin'
+            state.isLogIn = true;
+            console.log('Change user')
         },
         toLogOut: (state) => {
-            state.value = null
-        }
-
+            state.login = null
+            state.isLogIn = false
+        },
     }
 
 })
 
-export const selectUser = (state) => state.user.login;
+export const selectUserLogin = (state) => state.user.login;
+export const selectUserIsLogIn = (state) => state.user.isLogIn;
 export const {toLogIn, toLogOut} = userSlice.actions;
 
 export default userSlice.reducer;

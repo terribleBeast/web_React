@@ -1,25 +1,23 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
-import {toLogOut } from '../features/user/userSlice';
-import { useDispatch } from 'react-redux';
-import useLoginState from '../hooks/useLoginState';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUserIsLogIn, toLogOut } from '../features/user/userSlice';
 
 const ButtonLog = () => {
 
-    // const dispatch = useDispatch()
-    const [loginState, setLoginState] = useLoginState();
+    const dispatch = useDispatch()
+
+    const isLogIn = useSelector(selectUserIsLogIn)
 
     const LogOut = () => {
-        localStorage.setItem('isLogIn', 'false')
-        localStorage.setItem('login', 'None')
-        setLoginState(false)
+        dispatch(toLogOut())
     }
     
     
     
-    console.log('loginState',loginState)
-    if (loginState)
+    console.log('loginState',isLogIn)
+    if (isLogIn)
     {
         return (
             <div>

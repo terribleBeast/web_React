@@ -6,7 +6,13 @@ import ButtonTheme from './ButtonTheme';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import ButtonLog from './ButtonLog';
 
+import { useSelector } from 'react-redux';
+import { selectUserIsLogIn } from '../features/user/userSlice';
+
 function MainMenu() {
+
+  const isLogIn = useSelector(selectUserIsLogIn)
+
   return (
     <AppBar position="static">
       <Toolbar>
@@ -26,14 +32,14 @@ function MainMenu() {
         <ButtonTheme />
         <Button color="inherit" component={Link} to="/">Home</Button>
 
-        <ButtonLog/>
-        {localStorage.getItem('isLogIn') === 'true' ?
-        <IconButton
-          size="large"
-          color="inherit"
-        >
-          <PermIdentityIcon />
-        </IconButton> : <></>}
+        <ButtonLog />
+        {isLogIn ?
+          <IconButton
+            size="large"
+            color="inherit"
+          >
+            <PermIdentityIcon />
+          </IconButton> : <></>}
       </Toolbar>
     </AppBar>
   );

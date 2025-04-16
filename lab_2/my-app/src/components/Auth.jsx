@@ -1,19 +1,20 @@
 import React, { useEffect } from 'react';
-import useLoginState from '../hooks/useLoginState';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { selectUserIsLogIn } from '../features/user/userSlice';
 
 const Auth = ({ children }) => {
 
-    const logIn = useLoginState()[0];
+    const isLogIn = useSelector(selectUserIsLogIn)
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!logIn) {
+        if (!isLogIn) {
             navigate("/form");
         }
-    }, [logIn]);
+    }, [isLogIn]);
 
-    console.log('Auth', logIn)
+    console.log('Auth', isLogIn)
 
     return (
         <>{children}</>

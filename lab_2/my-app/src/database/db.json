@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": "93a2",
+      "email": "admin@mail.com",
+      "password": "admin",
+      "info": "I am admin",
+      "responds": []
+    },
+    {
+      "id": "7244",
+      "email": "guest@mail.com",
+      "password": "12",
+      "info": "I'm guest",
+      "responds": [
+        "Good job!",
+        "Comment!"
+      ]
+    },
+    {
+      "id": "22ef",
+      "email": "admin12@mail.com",
+      "password": "admin",
+      "info": "",
+      "responds": []
+    }
+  ]
+}

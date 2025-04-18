@@ -1,13 +1,13 @@
 import './App.css';
-import { Footer, Header, Content } from './components';
+import { Footer, Header, Content} from './components';
 import { Routes, Route, Outlet } from 'react-router-dom';
-import { PageOne, PageTwo } from './components/Pages';
 import Home from './components/Home'
 import Form from './components/Form'
 import AppBar from './components/ButtonAppBar';
 import Auth from './components/Auth';
+import UserPage from './components/UserPage';
 
-// should added <body>
+// Ломается при нажатии на икону пользователя
 function App() {
   return (
     <div className="App">
@@ -21,6 +21,7 @@ function App() {
             <Route path="/" element={<Outlet />}>
               <Route index element={<Home/>} />
               <Route path="form" element={<Form />} />
+              <Route path='user' element={<UserPage/>} />
               <Route path="*" element={<div>Not valid path</div>} />
             </Route>
           </Routes>

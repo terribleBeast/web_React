@@ -1,10 +1,10 @@
 import { loremIpsum } from 'lorem-ipsum';
 
-const BuildPage = (index) => (
+const BuildPage = () => (
   <>
-    <h3>Page {index}</h3>
+
     <div>
-      { loremIpsum({ count: 50 })}
+      {loremIpsum({ count: 50 })}
     </div>
   </>
 );

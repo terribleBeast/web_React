@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useCallback, useState } from "react"
 import { useDispatch } from "react-redux"
 import { toLogIn } from "../features/user/userSlice"
+import { createUser, getUser } from "../database/CRUD"
 
 // import './../App.css'
 
@@ -18,47 +19,61 @@ const Form = () => {
 
   const dispatch = useDispatch()
 
-  const { login, password } = watch();
+  const { email, password } = watch();
 
-  const onSubmit = useCallback((data) => {
+  const onSubmit = useCallback(() => {
 
-    console.log(data, isRegForm)
-    if (!isRegForm & login === 'admin' & password === '1234') {
-      // localStorage.setItem('isLogIn', 'true')
-      // localStorage.setItem('login', data.login)
-      dispatch(toLogIn())
-      console.log('dispatch')
+    // console.log(email, password, isRegForm)
 
-      navigate('/');
+    if (!isRegForm) {
+      getUser(email)
+      .then(data => {
+        if (data.password === password)
+          dispatch(toLogIn(email))
+          navigate('/')
+      })
     }
     else {
-      console.log('добавление в хранилище')
+      createUser(email, password)
+        .then(isNewUser => {
+          console.log(isNewUser)
+          if (isNewUser) {
+            dispatch(toLogIn(email))
+            navigate('/');
+          }
+          else 
+            alert('That user already exists.')
+        })
+
+
       // добавляем в хранилище
     }
-
-
-  }, [login, password, isRegForm]
+  }, [email, password, isRegForm, dispatch, navigate]
   )
-  // console.log('isRegForm', isRegForm)
+
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)} style={{
-
-      }}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <Grid >
           <Grid item >
             <Typography>
-              Логин
+              Email
             </Typography>
             <TextField {
-              ...register('login', { required: true })}
+              ...register('email', {
+                required: 'Email is required',
+                pattern: {
+                  value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                  message: 'Invalid email address',
+                }
+              })}
               variant="outlined"
             />
           </Grid>
           <Grid item >
             <Typography>
-              Пароль
+              Password
             </Typography>
             <TextField {
               ...register('password', { required: true, minLenght: 4 })}

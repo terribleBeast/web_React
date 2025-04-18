@@ -8,10 +8,10 @@ export const userSlice = createSlice({
     },
 
     reducers: {
-        toLogIn: (state) => {
-            state.login = 'admin'
+        toLogIn: (state, actions) => {
+            state.login = actions.payload
             state.isLogIn = true;
-            console.log('Change user')
+            console.log('to login', actions.payload)
         },
         toLogOut: (state) => {
             state.login = null

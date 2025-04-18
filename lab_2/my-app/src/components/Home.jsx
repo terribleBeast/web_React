@@ -1,32 +1,76 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
-import { selectUserIsLogIn } from '../features/user/userSlice';
+import { selectUserLogin } from '../features/user/userSlice';
+import { deleteUserRespond, getUsers, updateUserRespond } from '../database/CRUD';
+import { Button } from '@mui/material'
+import ClearIcon from '@mui/icons-material/Clear';
 
 const Home = () => {
 
-
-    const user = useSelector(selectUserIsLogIn)
-    const [feedbacks, setFeedbacks] = useState([])
-
+    const userLogin = useSelector(selectUserLogin);
+    const [feedbacks, setFeedbacks] = useState([]);
     const { register, handleSubmit } = useForm();
-    const onSubmit = (data) => {
-        setFeedbacks([...feedbacks, data.feedback])
-        console.log(feedbacks)
+
+
+    useEffect(() => {
+        getUsers().then(data => {
+            const transformedFeedbacks = new Map(
+                data.map(user => ([
+                    user.email,
+                    user.responds
+                ])));
+            setFeedbacks(transformedFeedbacks);
+        });
+    }, []);
+
+    // console.log(feedbacks.get('guest@mail.com'))
+
+    const onSubmitAddFeedback = (data) => {
+
+        feedbacks.get(userLogin).push(data.feedback)
+        setFeedbacks(new Map([...feedbacks]))
+        updateUserRespond(userLogin, data.feedback)
     };
-    console.log(user)
+
+    const onClickDeleteFeedback = (indexRespond) => {
+
+        deleteUserRespond(userLogin, indexRespond)
+        
+        feedbacks.get(userLogin).splice(indexRespond, 1)
+        setFeedbacks(new Map([...feedbacks]))
+        console.log(feedbacks)
+        // console.log('click')
+    }
+
     return (
         <div>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmitAddFeedback)}>
                 <input type="text" placeholder="your feedback" {...register("feedback")} />
                 <button type="submit">submit</button>
             </form>
 
-            <ul>
-                {feedbacks.map((feedback, index) => (
-                    <li key={index}> {feedback}</li>
+            <ul style={{ justifySelf: 'start' }}>
+                {feedbacks.keys().map((email) => (
+                    <li style={{ textAlign: 'left' }} key={email}>
+                        {email}
+                        <ul style={{ justifySelf: 'start' }}>
+                            {feedbacks.get(email).map((respond, index) => (
+                                <li key={index} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                    <p style={{ display: 'inline', maxWidth: '80%', wordBreak:'break-word'}}>{respond}</p>
+                                    {email === userLogin ? (
+                                        <Button onClick={() => onClickDeleteFeedback(index)}>
+                                            <ClearIcon />
+                                        </Button>
+                                    ) : null}
+                                </li>
+                            ))}
+                        </ul>
+                    </li>
                 ))}
             </ul>
+
+
         </div>
     );
 }

@@ -1,11 +1,10 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography, Button, IconButton, Icon } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, IconButton} from '@mui/material';
 import { Link } from 'react-router-dom'; // Если используете роутинг
 import MenuIcon from '@mui/icons-material/Menu';
 import ButtonTheme from './ButtonTheme';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 import ButtonLog from './ButtonLog';
-
 import { useSelector } from 'react-redux';
 import { selectUserIsLogIn } from '../features/user/userSlice';
 
@@ -30,16 +29,19 @@ function MainMenu() {
         </Typography>
 
         <ButtonTheme />
-        <Button color="inherit" component={Link} to="/">Home</Button>
+        <Button color="inherit" component={Link} to="/" style={{ textDecoration: 'none' }}>Home</Button>
 
         <ButtonLog />
         {isLogIn ?
           <IconButton
-            size="large"
-            color="inherit"
+            size="small"
+            color="inherit" 
+            component={Link} // при добавлении изменился цвет на черный
+            to='user'
           >
             <PermIdentityIcon />
-          </IconButton> : <></>}
+          </IconButton>
+          : <></>}
       </Toolbar>
     </AppBar>
   );

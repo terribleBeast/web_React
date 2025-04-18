@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { selectUserIsLogIn } from '../features/user/userSlice';
 
@@ -12,9 +12,9 @@ const Auth = ({ children }) => {
         if (!isLogIn) {
             navigate("/form");
         }
-    }, [isLogIn]);
+    }, [isLogIn, navigate]);
 
-    console.log('Auth', isLogIn)
+    // console.log('Auth', isLogIn)
 
     return (
         <>{children}</>

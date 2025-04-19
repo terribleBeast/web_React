@@ -6,13 +6,6 @@ function Header({ children }) {
         <header>
 
             <div style={{display: 'flex', justifySelf: 'right'}}>
-            {/* <BrowserRouter>
-                
-                <Routes path='/' element={<Content/>}>
-                    <Route to='/form' element={<Form />}></Route>
-                </Routes>
-                
-            </BrowserRouter> */}
             </div>
            
 

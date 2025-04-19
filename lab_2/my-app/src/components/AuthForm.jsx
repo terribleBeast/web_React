@@ -11,7 +11,7 @@ import { createUser, getUser } from "../database/CRUD"
 
 
 
-const Form = () => {
+const AuthForm = () => {
   const [isRegForm, setStateLog] = useState(true);
 
   const navigate = useNavigate();
@@ -27,11 +27,13 @@ const Form = () => {
 
     if (!isRegForm) {
       getUser(email)
-      .then(data => {
-        if (data.password === password)
-          dispatch(toLogIn(email))
-          navigate('/')
-      })
+        .then(data => {
+          console.log(data)
+          if (data !== undefined && data.password === password) {
+            dispatch(toLogIn(email))
+            navigate('/')
+          }
+        })
     }
     else {
       createUser(email, password)
@@ -41,7 +43,7 @@ const Form = () => {
             dispatch(toLogIn(email))
             navigate('/');
           }
-          else 
+          else
             alert('That user already exists.')
         })
 
@@ -96,5 +98,5 @@ const Form = () => {
   )
 }
 
-export default Form;
+export default AuthForm;
 

@@ -14,9 +14,8 @@ const ButtonLog = () => {
         dispatch(toLogOut())
     }
     
-    
-    
     console.log('loginState',isLogIn)
+    
     if (isLogIn)
     {
         return (

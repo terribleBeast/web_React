@@ -3,8 +3,10 @@ import { selectUserLogin } from '../features/user/userSlice';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form"
-import { Button, Grid, TextField, Typography } from "@mui/material"
+import { Button, Grid, TextField, Typography, Box } from "@mui/material"
 import { deleteUser, getUser, updateUserInfo } from '../database/CRUD';
+import EditIcon from '@mui/icons-material/Edit';
+import CloseIcon from '@mui/icons-material/Close';
 
 
 function UserPage() {
@@ -15,6 +17,8 @@ function UserPage() {
     const { register, handleSubmit } = useForm()
     const navigate = useNavigate()
 
+
+
     useEffect(
         () => {
             getUser(userLogin).then(
@@ -24,8 +28,8 @@ function UserPage() {
         }, [userLogin])
 
     // console.log(userInfo)
-    
-    
+
+
     const onSubmit = (data) => {
         updateUserInfo(userLogin, data.userInfo)
         setUserInfo(data.userInfo)
@@ -38,41 +42,47 @@ function UserPage() {
     }
 
     return (
-        <div>
-            <h1>My page</h1>
-            <h3>{userLogin}</h3>
-            <p>{userInfo}</p>
+        <Box >
+            <Typography variant='h4'>My page</Typography>
 
-            {isEditMode ? <form onSubmit={handleSubmit(onSubmit)}>
-                <Grid>
-                    <Grid>
-                        <Typography>
-                            Information about you
-                        </Typography>
-                    </Grid>
-                    <Grid>
-                        <TextField {
-                            ...register('userInfo')
-                        }
-                            defaultValue={userInfo.info}
-                        ></TextField>
-                    </Grid>
-                    <Grid>
-                        <input type="submit" value={'Edit'} />
-                    </Grid>
+            <Box style={{ textAlign: 'left' }}>
+                <Typography variant='h6'>Email: {userLogin}</Typography>
+                <Grid style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <Typography variant='h6' >About me:</Typography>
+                    {isEditMode ?
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            <TextField {
+                                ...register('userInfo')
+                            }
+                                defaultValue={userInfo}
+
+                            ></TextField>
+
+                            <Grid>
+                                <Button type="submit">Edit</Button>
+                            </Grid>
+                        </form> :
+                        <Typography style={{ maxWidth: '70%', wordBreak: 'break-word' }}>{userInfo}</Typography>}
+
+                    <Button onClick={() => {
+                        setIsEditMode(!isEditMode)
+                    }}> {isEditMode ? <CloseIcon /> : <EditIcon />} </Button>
                 </Grid>
-            </form> : null}
+            </Box>
 
-            <Button onClick={() => {
-                setIsEditMode(!isEditMode)
-            }}> {isEditMode ? 'Close panel' : 'Edit?'} </Button>
             <br />
+
             <Button
-                style={{ display: 'flex', justifySelf: 'flex-end', color: 'red', }}
+                style={{
+                    display: 'flex', 
+                    justifySelf: 'end',
+                    alignSelf: 'flex-end',
+                    color: 'red',
+                }}
                 variant="outlined"
                 onClick={() => onClickDeleteUser()}
-                >delete account</Button>
-        </div>
+            >delete account</Button>
+        </Box >
     );
 }
 

@@ -7,11 +7,11 @@ const host = `http://localhost:${port}`
 
 class User {
 
-    constructor(email, password, id, info = "", responds = []) {
+    constructor({ email, password, id, info = "", responds = [] }) {
         this.id = id
         this.email = email
         this.password = password
-        this.info = info
+        this.info = info === "" ? `Hello! I'm good!` : info
         this.responds = responds
     }
 
@@ -28,13 +28,13 @@ export async function getUser(email) {
 }
 
 // POST
-export async function createUser(email, password, info, responds) {
+export async function createUser(email, password) {
     try {
         const data = await getUser(email)
 
         if (data === undefined) { // there is no user with that email address
             console.log("create User", data)
-            const newUser = new User(email, password)
+            const newUser = new User({ email: email, password: password })
 
             await axios.post(`${host}/users`, newUser)
             console.log(`User ${newUser.email} is created`)
@@ -58,7 +58,14 @@ export async function updateUserInfo(email, info) {
     const userData = await getUser(email)
     console.log(userData)
 
-    const updatedUser = new User(userData.id, userData.email, userData.password, info)
+    const updatedUser = new User({
+        email: userData.email,
+        password: userData.password,
+        id: userData.id,
+        info: info,
+        responds: userData.responds
+    })
+
     console.log(updatedUser)
 
     return await axios.put(`${host}/users/${userData.id}`, updatedUser)
@@ -83,10 +90,13 @@ export async function updateUserRespond(email, newRespond) {
     // console.log(userData)
     userData.responds.push(newRespond)
 
-    const updatedUser = new User(
-        userData.id, userData.email, userData.password,
-        userData.info, userData.responds
-    )
+    const updatedUser = new User({
+        email: userData.email,
+        password: userData.password,
+        id: userData.id,
+        info: userData.info,
+        responds: userData.responds
+    })
     console.log(updatedUser)
 
     return await axios.put(`${host}/users/${userData.id}`, updatedUser)
@@ -102,10 +112,13 @@ export async function deleteUserRespond(email, indexRespond) {
     // console.log(userData)
     userData.responds.splice(indexRespond, 1)
 
-    const updatedUser = new User(
-        userData.id, userData.email, userData.password,
-        userData.info, userData.responds
-    )
+    const updatedUser = new User({
+        id: userData.id,
+        email: userData.email,
+        password: userData.password,
+        info: userData.info,
+        responds: userData.responds
+    })
 
     await axios.put(`${host}/users/${userData.id}`, updatedUser)
         .then(response =>
@@ -119,9 +132,7 @@ export async function deleteUserRespond(email, indexRespond) {
 
 export async function deleteUser(email) {
 
-
     const userData = await getUser(email)
-
 
     return await axios.delete(`${host}/users/${userData.id}`)
         .then(response =>

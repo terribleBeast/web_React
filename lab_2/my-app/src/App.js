@@ -1,13 +1,16 @@
 import './App.css';
-import { Footer, Header, Content} from './components';
+import { Footer, Header, Content } from './components';
 import { Routes, Route, Outlet } from 'react-router-dom';
 import Home from './components/Home'
-import Form from './components/Form'
+import AuthForm from './components/AuthForm'
 import AppBar from './components/ButtonAppBar';
 import Auth from './components/Auth';
 import UserPage from './components/UserPage';
+import BottomMenu from './components/BottomNavigarion';
+import Feedbacks from './components/Feedbacks'
 
-// Ломается при нажатии на икону пользователя
+
+
 function App() {
   return (
     <div className="App">
@@ -19,15 +22,17 @@ function App() {
         <Content>
           <Routes>
             <Route path="/" element={<Outlet />}>
-              <Route index element={<Home/>} />
-              <Route path="form" element={<Form />} />
-              <Route path='user' element={<UserPage/>} />
+              <Route index element={<Home />} />
+              <Route path="about" element={<Feedbacks />} />
+              <Route path="form" element={<AuthForm />} />
+              <Route path='user' element={<UserPage />} />
               <Route path="*" element={<div>Not valid path</div>} />
             </Route>
           </Routes>
 
         </Content>
       </Auth>
+      <BottomMenu />
       <Footer />
 
     </div>

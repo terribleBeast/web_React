@@ -1,31 +1,32 @@
-import React, { useEffect } from 'react'
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import React from 'react'
+import { Box, List, ListItem, ListItemButton, ListItemText, Typography } from '@mui/material'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectLabCount, toLab } from '../features/labs'
+import { useNavigate } from 'react-router-dom'
 
 function Menu() {
 
-  const location = useLocation();
-  useEffect(() => {
-
-    console.log(`Current location is`, location.pathname)
-
-    return (() => {console.log(`Previos location was`, location.pathname)
-    })
-  }, [location])
+  const navigate = useNavigate()
+  const labsName = []
+  for (let number = 1; number <= useSelector(selectLabCount); number++) {
+    labsName.push(`laboratory ${number}`);
+    
+  }
+  const dispatch = useDispatch()
 
   return (
-    <div style={{ textAlign: `left` }}>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/one">Page One</Link>
-          </li>
-          <li>
-            <Link to="/two">Page Two</Link>
-          </li>
-        </ul>
-      </nav>
-      <Outlet />
-    </div>
+    <Box>
+      <Typography variant='h5' style={{textAlign: 'center', margin: 5}}>Laboratories</Typography>
+      <List>
+        {labsName.map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton onClick={() => {dispatch(toLab(index)); navigate('/')}}>
+              <ListItemText primary={text}/>
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
   )
 }
 

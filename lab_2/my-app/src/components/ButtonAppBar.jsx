@@ -8,6 +8,7 @@ import ButtonLog from './ButtonLog';
 import { useSelector } from 'react-redux';
 import { selectUserIsLogIn } from '../features/user/userSlice';
 import TemporaryDrawer from './LeftDrawer'
+import AdminButton from './AdminButton';
 
 function ButtonAppBar() {
 
@@ -31,6 +32,7 @@ function ButtonAppBar() {
           Laboratories
         </Typography>
 
+        <AdminButton/>
         <ButtonTheme />
         <Button color="inherit" component={Link} to="/" style={{ textDecoration: 'none' }} >Home</Button>
 

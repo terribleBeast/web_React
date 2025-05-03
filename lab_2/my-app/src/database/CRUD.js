@@ -1,9 +1,10 @@
 import axios from 'axios';
+import { toLog } from '../features/utils';
+
 
 const port = "3001"
 const host = `http://localhost:${port}`
 
-// Использовать redux для http методов, здесь оставить лишь crud
 
 class User {
 
@@ -51,19 +52,15 @@ export async function createUser(email, password) {
 }
 
 // PUT
-export async function updateUserInfo(email, info) {
+export async function updateUser({email, data}) {
 
-    console.log('put')
-    console.log(email)
+    toLog(updateUser, email);
+
     const userData = await getUser(email)
-    console.log(userData)
 
     const updatedUser = new User({
-        email: userData.email,
-        password: userData.password,
-        id: userData.id,
-        info: info,
-        responds: userData.responds
+        ...userData, 
+        data
     })
 
     console.log(updatedUser)

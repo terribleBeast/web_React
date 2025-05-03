@@ -5,6 +5,7 @@ import { useCallback, useState } from "react"
 import { useDispatch } from "react-redux"
 import { toLogIn } from "../features/user/userSlice"
 import { createUser, getUser } from "../database/CRUD"
+import { roRO } from "@mui/x-date-pickers/locales"
 
 // import './../App.css'
 
@@ -30,7 +31,7 @@ const AuthForm = () => {
         .then(data => {
           console.log(data)
           if (data !== undefined && data.password === password) {
-            dispatch(toLogIn(email))
+            dispatch(toLogIn({ email: data.email, role: data.role, id: data.id }))
             navigate('/')
           }
         })
@@ -40,7 +41,7 @@ const AuthForm = () => {
         .then(isNewUser => {
           console.log(isNewUser)
           if (isNewUser) {
-            dispatch(toLogIn(email))
+            dispatch(toLogIn(email, 'user'))
             navigate('/');
           }
           else

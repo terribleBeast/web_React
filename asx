@@ -1,0 +1,115 @@
+[33mcommit f57882c0b0c77aa147b66ee93450ed0e1f0a2632[m[33m ([m[1;36mHEAD[m[33m)[m
+Author: Коваленко Алексей <kovalenkoalex20@gmail.com>
+Date:   Sat Apr 19 14:55:29 2025 +0700
+
+    make lab 7
+
+[33mcommit 158c88abfebdd9816f2c106cf09b287cdc9e483a[m
+Author: Коваленко Алексей <kovalenkoalex20@gmail.com>
+Date:   Fri Apr 18 15:50:10 2025 +0700
+
+    make lab 6
+
+[33mcommit 31696bcba74026a33b703487ca2cf187b886c501[m
+Author: Коваленко Алексей <kovalenkoalex20@gmail.com>
+Date:   Wed Apr 16 12:21:45 2025 +0700
+
+    Intermidiate version
+    Message:
+    - Delete useLoginState and move its functions to redux
+
+[33mcommit 52f3c81af94246d15deaa70bc39164cad4d5cfd0[m
+Author: Коваленко Алексей <kovalenkoalex20@gmail.com>
+Date:   Wed Apr 9 00:05:01 2025 +0700
+
+    lab 5: v1.0
+
+[33mcommit 0c1be97eb6bf4c951054c9da421147e2529e7640[m
+Author: Коваленко Алексей <kovalenkoalex20@gmail.com>
+Date:   Sat Apr 5 17:32:36 2025 +0700
+
+    lab 4 is done
+
+[33mcommit 7e8f6317f5925f6a1d4f86ac52862bc2eefaffd9[m
+Author: Коваленко Алексей <kovalenkoalex20@gmail.com>
+Date:   Tue Apr 1 22:45:51 2025 +0700
+
+    lab 4.1.1: the final version with the list of labs
+
+[33mcommit acee879ee70412ee1d66645254f9eb9bff0437eb[m
+Author: Коваленко Алексей <kovalenkoalex20@gmail.com>
+Date:   Tue Apr 1 22:05:14 2025 +0700
+
+    lab 4.1
+
+[33mcommit 16c0f5980691c66f3fdf307851111a54a5bc5515[m
+Author: Коваленко Алексей <kovalenkoalex20@gmail.com>
+Date:   Tue Mar 25 17:27:24 2025 +0700
+
+    lab 3: delete useless files
+
+[33mcommit bdffc47b6d045b258112a3d9b84e6761d5748dc6[m
+Author: Коваленко Алексей <kovalenkoalex20@gmail.com>
+Date:   Tue Mar 25 17:25:32 2025 +0700
+
+    lab 3
+
+[33mcommit 62f05bf0ea0a770908ac0e0484f78741ac167895[m
+Author: Коваленко Алексей <kovalenkoalex20@gmail.com>
+Date:   Tue Mar 18 16:58:50 2025 +0700
+
+    add css style, editing Menu
+
+[33mcommit 945d668be79c2bf37d1caeead7c1eead9e51b68e[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Коваленко Алексей <kovalenkoalex20@gmail.com>
+Date:   Tue Mar 18 15:04:25 2025 +0700
+
+    maked lab 3
+
+[33mcommit 683b888d862cc9636bc56dd5bccca1ffef80a271[m
+Author: Коваленко Алексей <kovalenkoalex20@gmail.com>
+Date:   Fri Mar 14 10:58:15 2025 +0700
+
+    Delete lab_3 and merging her files with lab_2
+
+[33mcommit f6775aaa994abc57658ad1e64061f01d1a132569[m
+Author: Коваленко Алексей <kovalenkoalex20@gmail.com>
+Date:   Tue Mar 11 20:01:23 2025 +0700
+
+    make lab 2
+
+[33mcommit 66e1b04db7238b1c8a21afb2f6ee7cfa7b742901[m
+Author: Коваленко Алексей <kovalenkoalex20@gmail.com>
+Date:   Tue Mar 11 20:00:43 2025 +0700
+
+    make lab 2
+
+[33mcommit 16b8190adbbe7c89e756c96b46eb66d9ddf924eb[m
+Author: Коваленко Алексей <kovalenkoalex20@gmail.com>
+Date:   Tue Mar 11 09:51:37 2025 +0700
+
+    removing file jj.html
+
+[33mcommit 28ad7ec205f2ab5302a6f8df821d98cce4b18b9c[m
+Author: Коваленко Алексей <kovalenkoalex20@gmail.com>
+Date:   Tue Mar 11 09:37:02 2025 +0700
+
+    adding an unpacking of a data array from a form
+
+[33mcommit d9077e19dbeffeeefdcc10e3fbe3107e04a69c0a[m
+Author: Коваленко Алексей <kovalenkoalex20@gmail.com>
+Date:   Tue Feb 18 10:07:40 2025 +0700
+
+    Add a script for working with the form. Completion of all work.
+
+[33mcommit 3925df0b855f366c83c425bbbfde0da4a96dc93c[m
+Author: Коваленко Алексей <127819435+terribleBeast@users.noreply.github.com>
+Date:   Tue Feb 11 22:12:47 2025 +0700
+
+    rename web to lab_1
+
+[33mcommit 6ae7c0d217c2a9f14766a3c281d11dc5f800cd6d[m
+Author: Коваленко Алексей <127819435+terribleBeast@users.noreply.github.com>
+Date:   Tue Feb 11 22:06:40 2025 +0700
+
+    add lab 1 files

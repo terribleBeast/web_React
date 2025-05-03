@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, List, ListItem, ListItemButton, ListItemText, Typography } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectLabCount, toLab } from '../features/labs'
+import { selectLabCount, toLab } from '../features/labsSlice'
 import { useNavigate } from 'react-router-dom'
 
 function Menu() {

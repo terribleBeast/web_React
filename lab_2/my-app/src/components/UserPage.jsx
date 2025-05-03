@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form"
 import { Button, Grid, TextField, Typography, Box } from "@mui/material"
-import { deleteUser, getUser, updateUserInfo } from '../database/CRUD';
+import { deleteUser, getUser, updateUser } from '../database/CRUD';
 import EditIcon from '@mui/icons-material/Edit';
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -31,7 +31,7 @@ function UserPage() {
 
 
     const onSubmit = (data) => {
-        updateUserInfo(userLogin, data.userInfo)
+        updateUser(userLogin, data.userInfo)
         setUserInfo(data.userInfo)
     }
 
